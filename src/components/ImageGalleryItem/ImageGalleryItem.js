@@ -24,7 +24,7 @@ export class ImageGalleryItem extends Component {
     return (
       <li onClick={this.openModal}>
         <img src={image} alt={name} />
-        <ImageModal isModalOpen={isModalOpen} closeModal={this.closeModal} />
+        <ImageModal isOpen={isModalOpen} onClose={this.closeModal} />
       </li>
     );
   }

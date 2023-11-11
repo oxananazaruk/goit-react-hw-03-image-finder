@@ -1,4 +1,4 @@
-import Modal from 'react-modal';
+import ReactModal from 'react-modal';
 
 const customStyles = {
   content: {
@@ -11,17 +11,17 @@ const customStyles = {
   },
 };
 
-Modal.setAppElement('#root');
+ReactModal.setAppElement('#root');
 
-export const ImageModal = ({ isModalOpen, closeModal }) => {
+export const ImageModal = ({ isOpen, onClose }) => {
   return (
-    <Modal
-      isOpen={isModalOpen}
-      onRequestClose={closeModal}
+    <ReactModal
+      isOpen={isOpen}
+      onRequestClose={onClose}
       style={customStyles}
       contentLabel="Large image"
     >
       <div>I am a modal</div>
-    </Modal>
+    </ReactModal>
   );
 };
