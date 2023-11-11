@@ -1,7 +1,9 @@
 import { Component } from 'react';
 import { SearchBar } from './Searchbar/Searchbar';
 import { fetchPhotos } from '../Services/api';
-import {ImageGallery} from './ImageGallery/ImageGallery'
+import { ImageGallery } from './ImageGallery/ImageGallery'
+import { Button } from './Button/Button';
+import {Loader} from './Loader/Loader'
 
 export class App extends Component {
   state = {
@@ -44,11 +46,22 @@ export class App extends Component {
     });
   };
 
+  handleLoadMore = () => {
+    this.setState(prevState => {
+      return {
+        page: prevState.page + 1,
+      };
+    });
+  };
+
   render() {
+    const { images, isLoading } = this.state;
     return (
       <div>
         <SearchBar onSubmit={this.handleSubmit} />
-        <ImageGallery items={this.state.images} />
+        <ImageGallery items={images} />
+        {images.length > 0 && <Button onLoad={this.handleLoadMore} />}
+        {isLoading && <Loader/>}
       </div>
     );
   }
