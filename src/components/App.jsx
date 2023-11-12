@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { GlobalStyle } from '../GlobalStyle';
 import { SearchBar } from './Searchbar/Searchbar';
 import { fetchPhotos } from '../Services/api';
 import { ImageGallery } from './ImageGallery/ImageGallery'
@@ -61,7 +62,8 @@ export class App extends Component {
         <SearchBar onSubmit={this.handleSubmit} />
         <ImageGallery items={images} />
         {images.length > 0 && <Button onLoad={this.handleLoadMore} />}
-        {isLoading && <Loader/>}
+        {isLoading && <Loader />}
+        <GlobalStyle />
       </div>
     );
   }

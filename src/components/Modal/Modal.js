@@ -8,12 +8,14 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    maxWidth: 'calc(100vw - 48px)',
+    maxHeight: 'calc(100vh - 24px)',
   },
 };
 
 ReactModal.setAppElement('#root');
 
-export const ImageModal = ({ isOpen, onClose }) => {
+export const ImageModal = ({ isOpen, onClose, modalImg, name }) => {
   return (
     <ReactModal
       isOpen={isOpen}
@@ -21,7 +23,7 @@ export const ImageModal = ({ isOpen, onClose }) => {
       style={customStyles}
       contentLabel="Large image"
     >
-      <div>I am a modal</div>
+      <img src={modalImg} alt={name} />
     </ReactModal>
   );
 };

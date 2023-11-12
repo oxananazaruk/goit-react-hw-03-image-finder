@@ -1,15 +1,17 @@
 import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
+import { ImageGalleryList } from './ImageGallery.styled';
 
 export const ImageGallery = ({ items }) => {
   return (
-    <ul>
+    <ImageGalleryList>
       {items.map(item => (
         <ImageGalleryItem
           key={item.id}
           image={item.previewURL}
           name={item.tags}
+          largeImg={item.largeImageURL}
         />
       ))}
-    </ul>
+    </ImageGalleryList>
   );
 };
