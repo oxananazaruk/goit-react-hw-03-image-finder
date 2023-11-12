@@ -14,6 +14,6 @@ export async function fetchPhotos(userRequest, page) {
   });
 
   const response = await axios.get(BASE_URL, { params });
-  console.log(response.data.hits);
-  return response.data.hits;
+  console.log(response.data);
+  return response.data;
 }

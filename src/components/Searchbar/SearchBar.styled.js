@@ -1,9 +1,5 @@
 import styled from 'styled-components';
-import {
-  Form as FormikForm,
-  Field as FormikField,
-  ErrorMessage as FormikError,
-} from 'formik';
+import { Form as FormikForm, Field as FormikField } from 'formik';
 
 export const Searchbar = styled.header`
   top: 0;
@@ -45,11 +41,6 @@ export const Field = styled(FormikField)`
   padding-right: 4px;
 `;
 
-export const ErrorMessage = styled(FormikError)`
-  color: ${p => p.theme.colors.red};
-  font-size: 14px;
-`;
-
 export const FormGroup = styled.label`
   width: 100%;
 `;
@@ -59,7 +50,6 @@ export const FormBtn = styled.button`
   width: 48px;
   height: 48px;
   border: 0;
-  background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg');
   background-size: 40%;
   background-repeat: no-repeat;
   background-position: center;
