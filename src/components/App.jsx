@@ -18,18 +18,18 @@ export class App extends Component {
     totalPages: 0,
   };
 
-   async componentDidUpdate(prevProps, prevState) {
+  async componentDidUpdate(prevProps, prevState) {
+    const { query, page } = this.state;
+    const userQuery = query.slice((query.indexOf("/") + 1), query.length);
      if (
       prevState.query !== this.state.query ||
       prevState.page !== this.state.page
-     ) {
-       const { query, page } = this.state
-       const userQuery = query.slice((query.indexOf("/") + 1), query.length);
+     ) { 
       try {
       this.setState({ isLoading: true, error: false });
         const responce = await fetchPhotos(userQuery, page);
         const { hits, totalHits } = responce;
-        if (hits.length === 0 || query.trim() === "") {
+        if (hits.length === 0 || userQuery.trim() === '') {
         return  toast.error("Sorry, there are no images matching your search query. Please try again.");
     };
         
@@ -37,10 +37,13 @@ export class App extends Component {
           return {
             images: [...prevState.images, ...hits],
             isLoading: false,
-            totalPages: Math.ceil(totalHits / 40),
+            totalPages: Math.ceil(totalHits / 12),
           }
         });
-        toast(`Hooray! We found ${totalHits} images.`);
+        if (page === 1) {
+          toast(`Hooray! We found ${totalHits} images.`);
+        }
+        
     } catch (error) {
       this.setState({ error: true });
     } finally {
